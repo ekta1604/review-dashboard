@@ -12,7 +12,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/analysis").then((res) => {
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/analysis`).then((res) => {
       setReviews(res.data);
     });
   }, []);
@@ -122,6 +122,9 @@ const Main = () => {
                 </CollapsibleSection>
                 <CollapsibleSection title="Bandit" color="sky">
                   {review.bandit_output || "No output."}
+                </CollapsibleSection>
+                <CollapsibleSection title="💡 AI Suggestion" color="violet">
+                  {review.gpt_suggestion || "No suggestion generated."}
                 </CollapsibleSection>
               </div>
             </div>
